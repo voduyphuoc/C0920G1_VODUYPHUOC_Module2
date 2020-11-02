@@ -20,7 +20,7 @@ public class VietDoc {
                     line += ((House) dichVu).getTieuChuanPhong()+COMMA+((House) dichVu).getMoTaTienNghiKhac()+COMMA+
                             ((House) dichVu).getSoTang();
                 }else if (dichVu instanceof Room){
-                    line += ((Room) dichVu).getDichVuDiKem().toString();
+                    line = line;
                 }
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
@@ -58,26 +58,8 @@ public class VietDoc {
                     int soTang = Integer.parseInt(temp[7]);
                     House house = new House(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,tieuChuanPhong,moTaTienNghiKhac,soTang);
                     dichVuList.add(house);
-                }else if (temp.length == 6){
-//                    int donVi;
-//                    double giaTien;
-//                    String[] arr = temp[6].split(",");
-//                    String tenDichVuDiKem = arr[0];
-//                    int donGia = Integer.parseInt(arr[1]);
-//                    double giaTien = Double.parseDouble(arr[2]);
-//                    DichVuDiKem dichVuDiKem = new DichVuDiKem();
-//                    Room room = new Room();
-//                    room.setTenDichVu(temp[0]);
-//                    dichVuDiKem.setTenDichVuDikem(arr[0]);
-//                    dichVuDiKem.setDonVi(Integer.parseInt(arr[1]));
-//                    dichVuDiKem.setGiaTien(Double.parseDouble(arr[2]));
-                    String dichVuDiKem = temp[5];
-                    String[] array = temp[5].split(",");
-                    String tenDichVuDiKem = array[0];
-                    int donVi = Integer.parseInt(array[1]);
-                    double giaTien = Double.parseDouble(array[2]);
-                    DichVuDiKem dichVuDiKem1 = new DichVuDiKem(tenDichVuDiKem,donVi,giaTien);
-                    Room room = new Room(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,dichVuDiKem1);
+                }else if (temp.length == 5){
+                    Room room = new Room(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue);
                     dichVuList.add(room);
                 }
             }

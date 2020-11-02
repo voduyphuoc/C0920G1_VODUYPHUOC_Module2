@@ -1,6 +1,6 @@
 package case_study.models;
 
-public class House extends DichVu {
+public class House extends DichVu implements Comparable<House>{
     private String tieuChuanPhong;
     private String moTaTienNghiKhac;
     private int soTang;
@@ -53,5 +53,10 @@ public class House extends DichVu {
                 ", moTaTienNghiKhac='" + moTaTienNghiKhac + '\'' +
                 ", soTang=" + soTang +
                 "} ";
+    }
+
+    @Override
+    public int compareTo(House house) {
+        return this.tenDichVu.compareTo(house.getTenDichVu());
     }
 }

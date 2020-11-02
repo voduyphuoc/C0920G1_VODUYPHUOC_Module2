@@ -8,8 +8,8 @@ public class Main {
     }
     public static ThaoTac thaoTac = new ThaoTac();
     public static Scanner scanner = new Scanner(System.in);
-    public static int choose = scanner.nextInt();
     public static void menu() {
+        int choose = 0;
         do {
             System.out.println("1.\tAdd New Services\n" +
                     "2.\tShow Services\n" +
@@ -25,10 +25,10 @@ public class Main {
                     thaoTac.themDichVu();
                     break;
                 case 2:
-                case 3:
-                case 4:
                     thaoTac.show();
                     break;
+                case 3:
+                case 4:
                 case 5:
                 case 6:
                 case 7:

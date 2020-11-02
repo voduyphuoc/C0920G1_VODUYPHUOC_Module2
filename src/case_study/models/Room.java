@@ -1,6 +1,6 @@
 package case_study.models;
 
-public class Room extends DichVu {
+public class Room extends DichVu implements Comparable<Room>{
     private DichVuDiKem dichVuDiKem;
     @Override
     public void showInformation() {
@@ -8,6 +8,10 @@ public class Room extends DichVu {
     }
 
     public Room() {
+    }
+
+    public Room(String tenDichVu, double dienTichSuDung, double chiPhiThue, int soLuongNguoi, String kieuThue) {
+        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
     }
 
     public Room(DichVuDiKem dichVuDiKem) {
@@ -32,5 +36,10 @@ public class Room extends DichVu {
         return "Room{"+ super.toString() +
                 "dichVuDiKem=" + dichVuDiKem +
                 "} ";
+    }
+
+    @Override
+    public int compareTo(Room room) {
+        return this.tenDichVu.compareTo(room.getTenDichVu());
     }
 }

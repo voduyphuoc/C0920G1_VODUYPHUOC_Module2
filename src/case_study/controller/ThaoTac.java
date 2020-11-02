@@ -3,9 +3,7 @@ package case_study.controller;
 import case_study.common.VietDoc;
 import case_study.models.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ThaoTac {
     public VietDoc vietDoc = new VietDoc();
@@ -50,9 +48,12 @@ public class ThaoTac {
             System.out.println("1.show villa.\n" +
                     "2.show house.\n" +
                     "3.show room\n" +
-                    "4.back to menu.\n" +
-                    "5.exit.");
-            System.out.println("input 1 - 4 :");
+                    "4.Show All Name Villa Not Duplicate.\n" +
+                    "5.Show All Name House Not Duplicate.\n" +
+                    "6.Show All Name Name Not Duplicate.\n" +
+                    "7.back to menu.\n" +
+                    "8.exit.");
+            System.out.println("input 1 - 8 :");
             choose = Integer.parseInt(scanner.nextLine());
             switch (choose){
                 case 1:
@@ -65,10 +66,19 @@ public class ThaoTac {
                     showRoom();
                     break;
                 case 4:
-                    Main.menu();
+                    showAllNameVillaNotDuplicate();
                     break;
                 case 5:
-                    System.exit(5);
+                    showAllNameHouseNotDuplicate();
+                    break;
+                case 6:
+                    showAllNameRoomNotDuplicate();
+                    break;
+                case 7:
+                    Main.menu();
+                    break;
+                case 8:
+                    System.exit(8);
                 default:
                     System.out.println("input choose : ");
             }
@@ -122,14 +132,14 @@ public class ThaoTac {
     }
     public void themRoom(){
         them();
-        System.out.println("Tên Dịch Vụ Đi kèm : ");
-        String tenDichVuDiKem = scanner.nextLine();
-        System.out.println("Đơn Vị : ");
-        int donVi = Integer.parseInt(scanner.nextLine());
-        System.out.println("Giá Tiền : ");
-        double giaTien = Double.parseDouble(scanner.nextLine());
-        DichVuDiKem dichVuDiKem = new DichVuDiKem(tenDichVuDiKem,donVi,giaTien);
-        Room room = new Room(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,dichVuDiKem);
+//        System.out.println("Tên Dịch Vụ Đi kèm : ");
+//        String tenDichVuDiKem = scanner.nextLine();
+//        System.out.println("Đơn Vị : ");
+//        int donVi = Integer.parseInt(scanner.nextLine());
+//        System.out.println("Giá Tiền : ");
+//        double giaTien = Double.parseDouble(scanner.nextLine());
+//        DichVuDiKem dichVuDiKem = new DichVuDiKem(tenDichVuDiKem,donVi,giaTien);
+        Room room = new Room(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue);
         roomList.add(room);
         vietDoc.viet(roomList,FILE_ROOM);
     }
@@ -148,6 +158,27 @@ public class ThaoTac {
     public void showRoom(){
         roomList = vietDoc.doc(FILE_ROOM);
         for (DichVu room : roomList){
+            System.out.println(room);
+        }
+    }
+    public void showAllNameVillaNotDuplicate(){
+        villaList = vietDoc.doc(FILE_VILLA);
+        TreeSet<DichVu> villaTreeSet = new TreeSet<>(villaList);
+        for (DichVu villa : villaTreeSet){
+            System.out.println(villa);
+        }
+    }
+    public void showAllNameHouseNotDuplicate(){
+        houseList = vietDoc.doc(FILE_HOUSE);
+        TreeSet<DichVu> houseTreeSet = new TreeSet<>(houseList);
+        for (DichVu house : houseTreeSet){
+            System.out.println(house);
+        }
+    }
+    public void showAllNameRoomNotDuplicate(){
+        roomList = vietDoc.doc(FILE_ROOM);
+        TreeSet<DichVu> roomTreeSet = new TreeSet<>(roomList);
+        for (DichVu room : roomTreeSet){
             System.out.println(room);
         }
     }

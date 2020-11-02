@@ -1,6 +1,6 @@
 package case_study.models;
 
-public class Villa extends DichVu{
+public class Villa extends DichVu implements Comparable<Villa>{
     private String tieuChuanPhong;
     private String moTaTienNghiKhac;
     private double dienTichHoBoi;
@@ -66,5 +66,10 @@ public class Villa extends DichVu{
                 ", dienTichHoBoi=" + dienTichHoBoi +
                 ", soTang=" + soTang +
                 "} ";
+    }
+
+    @Override
+    public int compareTo(Villa villa) {
+        return this.tenDichVu.compareTo(villa.getTenDichVu());
     }
 }
