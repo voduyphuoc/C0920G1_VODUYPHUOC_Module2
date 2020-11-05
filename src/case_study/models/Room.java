@@ -40,6 +40,6 @@ public class Room extends DichVu implements Comparable<Room>{
 
     @Override
     public int compareTo(Room room) {
-        return this.tenDichVu.compareTo(room.getTenDichVu());
+        return this.maDichVu.compareTo(room.getTenDichVu());
     }
 }

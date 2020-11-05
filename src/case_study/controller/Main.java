@@ -28,6 +28,8 @@ public class Main {
                     thaoTac.show();
                     break;
                 case 3:
+                    thaoTac.themCustomer();
+                    break;
                 case 4:
                 case 5:
                 case 6:

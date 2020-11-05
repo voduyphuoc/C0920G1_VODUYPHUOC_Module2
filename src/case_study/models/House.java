@@ -57,6 +57,6 @@ public class House extends DichVu implements Comparable<House>{
 
     @Override
     public int compareTo(House house) {
-        return this.tenDichVu.compareTo(house.getTenDichVu());
+        return this.maDichVu.compareTo(house.getTenDichVu());
     }
 }

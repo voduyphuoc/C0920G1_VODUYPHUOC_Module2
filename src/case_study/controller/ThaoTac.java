@@ -1,5 +1,6 @@
 package case_study.controller;
 
+import case_study.common.RegularExpression;
 import case_study.common.VietDoc;
 import case_study.models.*;
 
@@ -10,9 +11,11 @@ public class ThaoTac {
     public List<DichVu> villaList = new ArrayList<>();
     public List<DichVu> houseList = new ArrayList<>();
     public List<DichVu> roomList = new ArrayList<>();
+    public List<DichVu> customerList = new ArrayList<>();
     public final String FILE_VILLA = "src/case_study/data/Villa.csv";
     public final String FILE_HOUSE = "src/case_study/data/House.csv";
     public final String FILE_ROOM = "src/case_study/data/Room.csv";
+    public final String FILE_CUSTOMER = "src/case_study/data/Customer.csv";
     public Scanner scanner = new Scanner(System.in);
     public int choose = 0;
     public void themDichVu(){
@@ -82,50 +85,97 @@ public class ThaoTac {
                 default:
                     System.out.println("input choose : ");
             }
-        }while (choose != 5);
+        }while (choose >= 0 && choose <= 8);
     }
-    public String tenDichVu;
+    public String maDichVu;
     public double dienTichSuDung;
     public double chiPhiThue;
     public int soLuongNguoi;
     public String kieuThue;
     public void them(){
         scanner.nextLine();
-        System.out.println("Tên Dịch Vụ : ");
-        tenDichVu = scanner.nextLine();
-        System.out.println("Diện Tích Sử Dụng : ");
-        dienTichSuDung = Double.parseDouble(scanner.nextLine());
-        System.out.println("Chi Phí Thuê : ");
-        chiPhiThue = Double.parseDouble(scanner.nextLine());
-        System.out.println("Số Lượng Người : ");
-        soLuongNguoi = Integer.parseInt(scanner.nextLine());
-        System.out.println("Kiểu Thuê : ");
-        kieuThue = scanner.nextLine();
+        do {
+            System.out.println("Mã Dịch Vụ : ");
+            maDichVu = scanner.nextLine();
+        }while (!RegularExpression.isName(maDichVu));
+        do {
+            try {
+                System.out.println("Diện Tích Sử Dụng : ");
+                dienTichSuDung = Double.parseDouble(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("khong duoc nhap chuoi.");
+            }
+        }while (dienTichSuDung < 30);
+        do {
+            try {
+                System.out.println("Chi Phí Thuê : ");
+                chiPhiThue = Double.parseDouble(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("khong duoc nhap chuoi.");
+            }
+        }while (chiPhiThue <= 0);
+        do {
+            try {
+                System.out.println("Số Lượng Người : ");
+                soLuongNguoi = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("khong duoc nhap chuoi.");
+            }
+        }while (soLuongNguoi <= 0 || soLuongNguoi >= 20);
+        do {
+            System.out.println("Kiểu Thuê : ");
+            kieuThue = scanner.nextLine();
+        }while (!RegularExpression.isNameType(kieuThue));
     }
+    public String tieuChuanPhong;
+    public double dienTichHoBoi;
+    public int soTang;
     public void themVilla(){
         them();
-        System.out.println("Tiêu Chuẩn Phòng : ");
-        String tieuChuanPhong = scanner.nextLine();
+        do {
+            System.out.println("Tiêu Chuẩn Phòng : ");
+            tieuChuanPhong = scanner.nextLine();
+        }while (!RegularExpression.isNameType(tieuChuanPhong));
         System.out.println("Mô Tả Tiện Nghi Khác : ");
         String moTaTienNghiKhac = scanner.nextLine();
-        System.out.println("Diện Tích Hồ Bơi : ");
-        double dienTichHoBoi = Double.parseDouble(scanner.nextLine());
-        System.out.println("Số Tầng : ");
-        int soTang = Integer.parseInt(scanner.nextLine());
-        Villa villa = new Villa(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,tieuChuanPhong,moTaTienNghiKhac
+        do {
+            try {
+                System.out.println("Diện Tích Hồ Bơi : ");
+                dienTichHoBoi = Double.parseDouble(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("khong duoc nhap chuoi.");
+            }
+        }while (dienTichHoBoi < 30);
+        do {
+            try {
+                System.out.println("Số Tầng : ");
+                soTang = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("khong duoc nhap chuoi.");
+            }
+        }while (soTang < 0);
+        Villa villa = new Villa(maDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,tieuChuanPhong,moTaTienNghiKhac
         ,dienTichHoBoi,soTang);
         villaList.add(villa);
         vietDoc.viet(villaList,FILE_VILLA);
     }
     public void themHouse(){
         them();
-        System.out.println("Tiêu Chuẩn Phòng : ");
-        String tieuChuanPhong = scanner.nextLine();
+        do {
+            System.out.println("Tiêu Chuẩn Phòng : ");
+            tieuChuanPhong = scanner.nextLine();
+        }while (!RegularExpression.isNameType(tieuChuanPhong));
         System.out.println("Mô Tả Tiện Nghi Khác : ");
         String moTaTienNghiKhac = scanner.nextLine();
-        System.out.println("Số Tầng : ");
-        int soTang = Integer.parseInt(scanner.nextLine());
-        House house = new House(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,tieuChuanPhong,moTaTienNghiKhac
+        do {
+            try {
+                System.out.println("Số Tầng : ");
+                soTang = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("khong duoc nhap chuoi.");
+            }
+        }while (soTang < 0);
+        House house = new House(maDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue,tieuChuanPhong,moTaTienNghiKhac
         ,soTang);
         houseList.add(house);
         vietDoc.viet(houseList,FILE_HOUSE);
@@ -139,7 +189,7 @@ public class ThaoTac {
 //        System.out.println("Giá Tiền : ");
 //        double giaTien = Double.parseDouble(scanner.nextLine());
 //        DichVuDiKem dichVuDiKem = new DichVuDiKem(tenDichVuDiKem,donVi,giaTien);
-        Room room = new Room(tenDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue);
+        Room room = new Room(maDichVu,dienTichSuDung,chiPhiThue,soLuongNguoi,kieuThue);
         roomList.add(room);
         vietDoc.viet(roomList,FILE_ROOM);
     }
@@ -181,5 +231,45 @@ public class ThaoTac {
         for (DichVu room : roomTreeSet){
             System.out.println(room);
         }
+    }
+    public String hoTen;
+    public String ngaySinh;
+    public String gioiTinh;
+    public String soCMND;
+    public String soDT;
+    public String email;
+    public String loaiKhach;
+    public String diaChi;
+    public void themCustomer(){
+        scanner.nextLine();
+        do {
+            System.out.println("Họ tên : ");
+            hoTen = scanner.nextLine();
+        }while (!RegularExpression.isNameCustomer(hoTen));
+        do {
+            System.out.println("Ngày sinh : ");
+            ngaySinh = scanner.nextLine();
+        }while (!RegularExpression.isNgaySinh(ngaySinh));
+        do {
+            System.out.println("Giới Tính : ");
+            gioiTinh = scanner.nextLine();
+        }while (!RegularExpression.isGioiTinh(gioiTinh));
+        do {
+            System.out.println("Số cmnd : ");
+            soCMND = scanner.nextLine();
+        }while (!RegularExpression.isCMND(soCMND));
+        System.out.println("Số Điện Thoại : ");
+        soDT = scanner.nextLine();
+        do {
+            System.out.println("Email : ");
+            email = scanner.nextLine();
+        }while (!RegularExpression.isEmail(email));
+        System.out.println("Loại khách : ");
+        loaiKhach = scanner.nextLine();
+        System.out.println("Địa chỉ : ");
+        diaChi = scanner.nextLine();
+        Customer customer = new Customer(hoTen,ngaySinh,gioiTinh,soCMND,soDT,email,loaiKhach,diaChi);
+        customerList.add(customer);
+        vietDoc.viet(customerList,FILE_CUSTOMER);
     }
 }

@@ -1,7 +1,7 @@
 package case_study.models;
 
 public abstract class DichVu {
-    protected String tenDichVu;
+    protected String maDichVu;
     protected double dienTichSuDung;
     protected double chiPhiThue;
     protected int soLuongNguoi;
@@ -10,8 +10,8 @@ public abstract class DichVu {
     public DichVu() {
     }
 
-    public DichVu(String tenDichVu, double dienTichSuDung, double chiPhiThue, int soLuongNguoi, String kieuThue) {
-        this.tenDichVu = tenDichVu;
+    public DichVu(String maDichVu, double dienTichSuDung, double chiPhiThue, int soLuongNguoi, String kieuThue) {
+        this.maDichVu = maDichVu;
         this.dienTichSuDung = dienTichSuDung;
         this.chiPhiThue = chiPhiThue;
         this.soLuongNguoi = soLuongNguoi;
@@ -19,11 +19,11 @@ public abstract class DichVu {
     }
 
     public String getTenDichVu() {
-        return tenDichVu;
+        return maDichVu;
     }
 
     public void setTenDichVu(String tenDichVu) {
-        this.tenDichVu = tenDichVu;
+        this.maDichVu = tenDichVu;
     }
 
     public double getDienTichSuDung() {
@@ -61,7 +61,7 @@ public abstract class DichVu {
     @Override
     public String toString() {
         return "DichVu{" +
-                "tenDichVu='" + tenDichVu + '\'' +
+                "tenDichVu='" + maDichVu + '\'' +
                 ", dienTichSuDung=" + dienTichSuDung +
                 ", chiPhiThue=" + chiPhiThue +
                 ", soLuongNguoi=" + soLuongNguoi +

@@ -3,12 +3,11 @@ import case_study.models.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class VietDoc {
     public final String COMMA = ",";
     public void viet(List<DichVu> dichVuList, String pathFile){
         try {
-            FileWriter fileWriter = new FileWriter(pathFile);
+            FileWriter fileWriter = new FileWriter(pathFile,true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (DichVu dichVu:dichVuList){
                 String line = dichVu.getTenDichVu()+COMMA+dichVu.getDienTichSuDung()+COMMA+dichVu.getChiPhiThue()+COMMA+

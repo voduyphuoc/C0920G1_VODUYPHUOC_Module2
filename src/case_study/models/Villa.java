@@ -70,6 +70,6 @@ public class Villa extends DichVu implements Comparable<Villa>{
 
     @Override
     public int compareTo(Villa villa) {
-        return this.tenDichVu.compareTo(villa.getTenDichVu());
+        return this.maDichVu.compareTo(villa.getTenDichVu());
     }
 }
