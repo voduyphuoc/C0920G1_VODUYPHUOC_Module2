@@ -4,8 +4,8 @@ import java.util.TreeMap;
 
 public class TestTreeMap {
     public static void main(String[] args) {
-        String string = "vo duy phuoc vo";
-        String[] array = string.split("\\s");
+        String string = "vo duy      phuoc Vo     ";
+        String[] array = string.split("\\s+");
         TreeMap<String, Integer> treeMap = new TreeMap<>();
         String temp;
         int count;

@@ -1,25 +1,20 @@
 package case_study.models;
 
-public class Villa extends DichVu implements Comparable<Villa>{
+public class Villa extends DichVu{
     private String tieuChuanPhong;
     private String moTaTienNghiKhac;
-    private double dienTichHoBoi;
-    private int soTang;
+    private String dienTichHoBoi;
+    private String soTang;
 
-    @Override
-    public void showInformation() {
-        System.out.println(this.toString());
-    }
-
-    public Villa(String tieuChuanPhong, String moTaTienNghiKhac, double dienTichHoBoi, int soTang) {
+    public Villa(String tieuChuanPhong, String moTaTienNghiKhac, String dienTichHoBoi, String soTang) {
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTaTienNghiKhac = moTaTienNghiKhac;
         this.dienTichHoBoi = dienTichHoBoi;
         this.soTang = soTang;
     }
 
-    public Villa(String tenDichVu, double dienTichSuDung, double chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTaTienNghiKhac, double dienTichHoBoi, int soTang) {
-        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
+    public Villa(String tenDichVu, String dienTichSuDung, String chiPhiThue, String soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, String moTaTienNghiKhac, String dienTichHoBoi, String soTang) {
+        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTaTienNghiKhac = moTaTienNghiKhac;
         this.dienTichHoBoi = dienTichHoBoi;
@@ -42,34 +37,34 @@ public class Villa extends DichVu implements Comparable<Villa>{
         this.moTaTienNghiKhac = moTaTienNghiKhac;
     }
 
-    public double getDienTichHoBoi() {
+    public String getDienTichHoBoi() {
         return dienTichHoBoi;
     }
 
-    public void setDienTichHoBoi(double dienTichHoBoi) {
+    public void setDienTichHoBoi(String dienTichHoBoi) {
         this.dienTichHoBoi = dienTichHoBoi;
     }
 
-    public int getSoTang() {
+    public String getSoTang() {
         return soTang;
     }
 
-    public void setSoTang(int soTang) {
+    public void setSoTang(String soTang) {
         this.soTang = soTang;
     }
 
     @Override
     public String toString() {
-        return "Villa{"  + super.toString()+
+        return "Villa{" + super.toString() +
                 "tieuChuanPhong='" + tieuChuanPhong + '\'' +
                 ", moTaTienNghiKhac='" + moTaTienNghiKhac + '\'' +
-                ", dienTichHoBoi=" + dienTichHoBoi +
-                ", soTang=" + soTang +
+                ", dienTichHoBoi='" + dienTichHoBoi + '\'' +
+                ", soTang='" + soTang + '\'' +
                 "} ";
     }
 
     @Override
-    public int compareTo(Villa villa) {
-        return this.maDichVu.compareTo(villa.getTenDichVu());
+    public void showInformation() {
+        System.out.println(this.toString());
     }
 }

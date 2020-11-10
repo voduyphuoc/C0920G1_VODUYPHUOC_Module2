@@ -1,53 +1,53 @@
 package case_study.models;
 
 public abstract class DichVu {
-    protected String maDichVu;
-    protected double dienTichSuDung;
-    protected double chiPhiThue;
-    protected int soLuongNguoi;
-    protected String kieuThue;
+    private String tenDichVu;
+    private String dienTichSuDung;
+    private String chiPhiThue;
+    private String soLuongNguoiToiDa;
+    private String kieuThue;
     public abstract void showInformation();
     public DichVu() {
     }
 
-    public DichVu(String maDichVu, double dienTichSuDung, double chiPhiThue, int soLuongNguoi, String kieuThue) {
-        this.maDichVu = maDichVu;
+    public DichVu(String tenDichVu, String dienTichSuDung, String chiPhiThue, String soLuongNguoiToiDa, String kieuThue) {
+        this.tenDichVu = tenDichVu;
         this.dienTichSuDung = dienTichSuDung;
         this.chiPhiThue = chiPhiThue;
-        this.soLuongNguoi = soLuongNguoi;
+        this.soLuongNguoiToiDa = soLuongNguoiToiDa;
         this.kieuThue = kieuThue;
     }
 
     public String getTenDichVu() {
-        return maDichVu;
+        return tenDichVu;
     }
 
     public void setTenDichVu(String tenDichVu) {
-        this.maDichVu = tenDichVu;
+        this.tenDichVu = tenDichVu;
     }
 
-    public double getDienTichSuDung() {
+    public String getDienTichSuDung() {
         return dienTichSuDung;
     }
 
-    public void setDienTichSuDung(double dienTichSuDung) {
+    public void setDienTichSuDung(String dienTichSuDung) {
         this.dienTichSuDung = dienTichSuDung;
     }
 
-    public double getChiPhiThue() {
+    public String getChiPhiThue() {
         return chiPhiThue;
     }
 
-    public void setChiPhiThue(double chiPhiThue) {
+    public void setChiPhiThue(String chiPhiThue) {
         this.chiPhiThue = chiPhiThue;
     }
 
-    public int getSoLuongNguoi() {
-        return soLuongNguoi;
+    public String getSoLuongNguoiToiDa() {
+        return soLuongNguoiToiDa;
     }
 
-    public void setSoLuongNguoi(int soLuongNguoi) {
-        this.soLuongNguoi = soLuongNguoi;
+    public void setSoLuongNguoiToiDa(String soLuongNguoiToiDa) {
+        this.soLuongNguoiToiDa = soLuongNguoiToiDa;
     }
 
     public String getKieuThue() {
@@ -61,10 +61,10 @@ public abstract class DichVu {
     @Override
     public String toString() {
         return "DichVu{" +
-                "tenDichVu='" + maDichVu + '\'' +
-                ", dienTichSuDung=" + dienTichSuDung +
-                ", chiPhiThue=" + chiPhiThue +
-                ", soLuongNguoi=" + soLuongNguoi +
+                "tenDichVu='" + tenDichVu + '\'' +
+                ", dienTichSuDung='" + dienTichSuDung + '\'' +
+                ", chiPhiThue='" + chiPhiThue + '\'' +
+                ", soLuongNguoiToiDa='" + soLuongNguoiToiDa + '\'' +
                 ", kieuThue='" + kieuThue + '\'' +
                 '}';
     }
