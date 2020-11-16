@@ -84,5 +84,10 @@ public class SapXepStudent implements Comparable <SapXepStudent>{
         for(SapXepStudent st : lists){
             System.out.println(st.toString());
         }
+        String str = "16/01/1999";
+        System.out.println("aaaaaaaaaaaaaaa");
+        String year = str.substring(str.lastIndexOf("/")+1,str.length());
+        System.out.println(year);
     }
+
 }

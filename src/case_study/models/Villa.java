@@ -1,6 +1,6 @@
 package case_study.models;
 
-public class Villa extends DichVu{
+public class Villa extends DichVu implements Comparable<Villa>{
     private String tieuChuanPhong;
     private String moTaTienNghiKhac;
     private String dienTichHoBoi;
@@ -13,8 +13,8 @@ public class Villa extends DichVu{
         this.soTang = soTang;
     }
 
-    public Villa(String tenDichVu, String dienTichSuDung, String chiPhiThue, String soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, String moTaTienNghiKhac, String dienTichHoBoi, String soTang) {
-        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
+    public Villa(String id, String tenDichVu, String dienTichSuDung, String chiPhiThue, String soLuongNguoiToiDa, String kieuThue, String tieuChuanPhong, String moTaTienNghiKhac, String dienTichHoBoi, String soTang) {
+        super(id, tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoiToiDa, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTaTienNghiKhac = moTaTienNghiKhac;
         this.dienTichHoBoi = dienTichHoBoi;
@@ -55,7 +55,7 @@ public class Villa extends DichVu{
 
     @Override
     public String toString() {
-        return "Villa{" + super.toString() +
+        return "Villa{"+ super.toString() +
                 "tieuChuanPhong='" + tieuChuanPhong + '\'' +
                 ", moTaTienNghiKhac='" + moTaTienNghiKhac + '\'' +
                 ", dienTichHoBoi='" + dienTichHoBoi + '\'' +
@@ -66,5 +66,10 @@ public class Villa extends DichVu{
     @Override
     public void showInformation() {
         System.out.println(this.toString());
+    }
+
+    @Override
+    public int compareTo(Villa villa) {
+        return this.getTenDichVu().compareTo(villa.getTenDichVu());
     }
 }

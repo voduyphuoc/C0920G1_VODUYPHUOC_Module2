@@ -1,6 +1,7 @@
 package case_study.models;
 
 public abstract class DichVu {
+    private String id;
     private String tenDichVu;
     private String dienTichSuDung;
     private String chiPhiThue;
@@ -10,12 +11,21 @@ public abstract class DichVu {
     public DichVu() {
     }
 
-    public DichVu(String tenDichVu, String dienTichSuDung, String chiPhiThue, String soLuongNguoiToiDa, String kieuThue) {
+    public DichVu(String id, String tenDichVu, String dienTichSuDung, String chiPhiThue, String soLuongNguoiToiDa, String kieuThue) {
+        this.id = id;
         this.tenDichVu = tenDichVu;
         this.dienTichSuDung = dienTichSuDung;
         this.chiPhiThue = chiPhiThue;
         this.soLuongNguoiToiDa = soLuongNguoiToiDa;
         this.kieuThue = kieuThue;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTenDichVu() {
@@ -61,7 +71,8 @@ public abstract class DichVu {
     @Override
     public String toString() {
         return "DichVu{" +
-                "tenDichVu='" + tenDichVu + '\'' +
+                "id='" + id + '\'' +
+                ", tenDichVu='" + tenDichVu + '\'' +
                 ", dienTichSuDung='" + dienTichSuDung + '\'' +
                 ", chiPhiThue='" + chiPhiThue + '\'' +
                 ", soLuongNguoiToiDa='" + soLuongNguoiToiDa + '\'' +
